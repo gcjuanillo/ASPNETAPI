@@ -11,6 +11,8 @@ using SampleWebApiAspNetCore.MappingProfiles;
 using SampleWebApiAspNetCore.Repositories;
 using SampleWebApiAspNetCore.Services;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using WebApiAspNetCore.MappingProfiles;
+using WebApiAspNetCore.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +29,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCustomCors("AllowAllOrigins");
 
 builder.Services.AddSingleton<ISeedDataService, SeedDataService>();
-builder.Services.AddScoped<IFoodRepository, FoodSqlRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountSqlRepository>();
 builder.Services.AddScoped(typeof(ILinkService<>), typeof(LinkService<>));
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
@@ -37,10 +39,10 @@ builder.Services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddVersioning();
 
-builder.Services.AddDbContext<FoodDbContext>(opt =>
-    opt.UseInMemoryDatabase("FoodDatabase"));
+builder.Services.AddDbContext<AccountDbContext>(opt =>
+    opt.UseInMemoryDatabase("AccountDatabase"));
 
-builder.Services.AddAutoMapper(typeof(FoodMappings));
+builder.Services.AddAutoMapper(typeof(AccountMappings));
 
 var app = builder.Build();
 

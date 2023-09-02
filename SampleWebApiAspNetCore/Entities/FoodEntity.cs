@@ -3,6 +3,8 @@
     public class FoodEntity
     {
         public int Id { get; set; }
+
+        //question mark means the property is optional
         public string? Name { get; set; }
         public string? Type { get; set; }
         public int Calories { get; set; }

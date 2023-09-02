@@ -106,13 +106,13 @@ namespace SampleWebApiAspNetCore.Services
             var createLink = _urlHelper.Link(GetMethod(methods, typeof(HttpPostAttribute)), new { version = version.ToString() });
             links.Add(
               new LinkDto(createLink,
-              "create_food",
+              "create_account",
               "POST"));
 
             var updateLink = _urlHelper.Link(GetMethod(methods, typeof(HttpPutAttribute)), new { version = version.ToString(), id = id });
             links.Add(
                new LinkDto(updateLink,
-               "update_food",
+               "update_account",
                "PUT"));
 
             return links;
